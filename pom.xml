@@ -7,7 +7,9 @@
     <groupId>cn.study</groupId>
     <artifactId>study</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <modules>
+        <module>ssm</module>
+    </modules>
     <packaging>pom</packaging>
     <name>study</name>
 
