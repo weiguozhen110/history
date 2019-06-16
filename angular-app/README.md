@@ -1,3 +1,14 @@
+1.安装angular cli
+  npm install -g @angular/cli
+ 
+2.angular-in-memory-web-api 安装 模拟数据库服务端 依赖
+npm install angular-in-memory-web-api --save
+
+3.添加 html 模块 主要用户html、css、bootstrap table的学习总结
+ng g module html --routing
+ng g component html
+
+
 # AngularApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
