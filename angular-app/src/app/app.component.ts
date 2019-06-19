@@ -16,14 +16,15 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
-  showAside() {
+  aside() {
     const asideDom: any = document.getElementById('aside');
-    asideDom.style.transform = 'translate(0,0)';
+    const val =  asideDom.style.transform.substring(10).split(',')[0];
+    if (val === '0px') {
+      asideDom.style.transform = 'translate(100%,0)';
+    } else {
+      asideDom.style.transform = 'translate(0,0)';
+    }
   }
 
-  hideAside() {
-    const asideDom: any = document.getElementById('aside');
-    asideDom.style.transform = 'translate(100%,0)';
 
-  }
 }

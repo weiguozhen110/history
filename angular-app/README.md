@@ -1,6 +1,17 @@
 1.安装angular cli
   npm install -g @angular/cli
- 
+
+2.基本命令、参数
+  --skip-install     生成完项目文件之后不执行npm install这个动作，手动执行npm install 例：ng new my-app --skip-install 
+  --help             查看帮助
+  npm start/ng serve 运行项目
+  pm build/ng build  执行构建
+  
+3.配置文件 angular.json
+  
+
+  
+  
 2.angular-in-memory-web-api 安装 模拟数据库服务端 依赖
 npm install angular-in-memory-web-api --save
 

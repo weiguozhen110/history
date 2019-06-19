@@ -1,12 +1,12 @@
 <div class="content">
-  <button (click)="showAside()">弹出侧边栏</button>
-  <button (click)="hideAside()">隐藏侧边栏</button>
+  &nbsp;<a [routerLink]="['']">首页</a>
+  &nbsp;<button (click)="aside()">弹出/隐藏侧边栏</button>
 </div>
 
-<hr/>
 
 <aside id="aside">
   <a [routerLink]="['/html']">HTML模块s</a>
 </aside>
+
 
 <router-outlet></router-outlet>
