@@ -2,10 +2,17 @@
   width: 200px;
   height: 100%;
   position: absolute;
-  right: 0px;
-  top:0px;
-  background: #000;
+  right: 0;
+  top:8px;
+  background: #1a1a1a;
   color:#fff;
   transform: translate(100%,0);
   transition: all 2s;
+}
+a{
+  color: white;
+}
+
+.header{
+  background: #1a1a1a;
 }

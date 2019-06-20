@@ -171,20 +171,16 @@
 						* 注意：
 							1. 一般会给每一个单选框提供value属性，指定其被选中后提交的值
 							2. checked属性，可以指定默认值
-							
 			* file：文件选择框
 			* hidden：隐藏域，用于提交一些信息。
 			* 按钮：
 					* submit：提交按钮。可以提交表单
 					* button：普通按钮
 					* image： 图片提交按钮, src 属性指定图片的路径	
-
 			    * label：指定输入项的文字描述信息
 					   * label的for属性一般会和 input 的 id属性值 对应。如果对应了，则点击label区域，会让input输入框获取焦点。
-			
 			* select: 下拉列表
 				* 子元素：option，指定列表项
-				
 			* textarea：文本域
 				* cols：指定列数，每一行有多少个字符
 				* rows：默认多少行。		
