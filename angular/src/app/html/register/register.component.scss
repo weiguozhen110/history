@@ -5,7 +5,7 @@
 }
 
 body{
-  background: url("~src/assets/image/register_bg.png") no-repeat center top;
+  background: url("../../../assets/register/register_bg.png") no-repeat center top;
   padding-top: 25px;
 }
 
@@ -88,4 +88,13 @@ body{
   height: 40px;
   background-color: #FFD026;
   border: 1px solid #FFD026 ;
+}
+
+#td_sub{
+  padding-left: 150px;
+}
+
+.error{
+  color:red;
+  vertical-align: middle;
 }

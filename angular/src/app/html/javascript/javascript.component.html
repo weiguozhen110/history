@@ -1,3 +1,27 @@
-<p>
-  javascript works!
-</p>
+<body>
+<!--灯泡-->
+<div>
+  <img id="light" (click)="light()" src="assets/light/off.gif" alt="灯泡">
+</div>
+<br>
+<hr>
+
+<!--windows 事件-->
+<div>
+  <button (click)="confirm()">弹出确认窗口</button>
+  <br>
+  <input (click)="open()" type="button" value="打开百度"/>
+  <input (click)="close()" type="button" value="关闭百度"/>
+  <br>
+  <input (click)="timeout()" type="button" value="一次性定时器"/>
+  <br>
+  <input (click)="setInterval()" type="button" value="开启循环定时器"/>
+  <input (click)="cancelInterval()" type="button" value="关闭循环定时器"/>
+  <br>
+  <a [routerLink]="['/html/javascript/rotary']">跳转到轮播图</a>
+</div>
+<br>
+<hr>
+</body>
+
+<router-outlet></router-outlet>

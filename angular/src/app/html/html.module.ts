@@ -6,12 +6,17 @@ import { HtmlComponent } from './html.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { JavascriptComponent } from './javascript/javascript.component';
+import {FormsModule} from '@angular/forms';
+import { RotaryMapComponent } from './javascript/rotary-map/rotary-map.component';
+import { ToHtmlHomeComponent } from './javascript/to-html-home/to-html-home.component';
+import { DynamicTableComponent } from './dynamic-table/dynamic-table.component';
 
 @NgModule({
-  declarations: [HtmlComponent, RegisterComponent, HomeComponent, JavascriptComponent],
+  declarations: [HtmlComponent, RegisterComponent, HomeComponent, JavascriptComponent, RotaryMapComponent, ToHtmlHomeComponent, DynamicTableComponent],
   imports: [
     CommonModule,
-    HtmlRoutingModule
+    HtmlRoutingModule,
+    FormsModule
   ]
 })
 export class HtmlModule { }
