@@ -10,9 +10,10 @@ import {FormsModule} from '@angular/forms';
 import { RotaryMapComponent } from './javascript/rotary-map/rotary-map.component';
 import { ToHtmlHomeComponent } from './javascript/to-html-home/to-html-home.component';
 import { DynamicTableComponent } from './dynamic-table/dynamic-table.component';
+import { CssComponent } from './css/css.component';
 
 @NgModule({
-  declarations: [HtmlComponent, RegisterComponent, HomeComponent, JavascriptComponent, RotaryMapComponent, ToHtmlHomeComponent, DynamicTableComponent],
+  declarations: [HtmlComponent, RegisterComponent, HomeComponent, JavascriptComponent, RotaryMapComponent, ToHtmlHomeComponent, DynamicTableComponent, CssComponent],
   imports: [
     CommonModule,
     HtmlRoutingModule,
