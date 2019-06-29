@@ -1,4 +1,4 @@
-package base;
+package base.api1;
 
 /*
 字符串常量池：程序当中直接写上的双引号字符串，就在字符串常量池中。

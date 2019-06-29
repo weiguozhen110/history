@@ -1,4 +1,4 @@
-package base;
+package base.api1;
 /*
  静态代码块的格式是：
  public class 类名称 {

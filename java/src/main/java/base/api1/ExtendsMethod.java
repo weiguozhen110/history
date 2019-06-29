@@ -1,4 +1,4 @@
-package base;
+package base.api1;
 
 /*
 在父子类的继承关系当中，创建子类对象，访问成员方法的规则：

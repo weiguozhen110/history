@@ -1,4 +1,4 @@
-package base;
+package base.api1;
 
 /*
 抽象方法：就是加上abstract关键字，然后去掉大括号，直接分号结束。

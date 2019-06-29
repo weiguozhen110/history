@@ -1,4 +1,4 @@
-package base;
+package base.api1;
 
 import java.util.Random;
 import java.util.Scanner;

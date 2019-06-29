@@ -1,4 +1,4 @@
-package base;
+package base.api1;
 
 public class ExtendsFu {
 
