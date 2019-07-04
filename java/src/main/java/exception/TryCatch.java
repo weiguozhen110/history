@@ -42,8 +42,8 @@ public class TryCatch {
 
             /*
                 java.io.IOException: 文件的后缀名不对
-                    at com.itheima.demo02.Exception.Demo01TryCatch.readFile(TryCatch.java:55)
-                    at com.itheima.demo02.Exception.Demo01TryCatch.main(TryCatch.java:27)
+                    at com.itheima.demo02.Exception.TryCatch.readFile(TryCatch.java:55)
+                    at com.itheima.demo02.Exception.TryCatch.main(TryCatch.java:27)
              */
             e.printStackTrace();
         }
