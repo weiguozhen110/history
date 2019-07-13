@@ -8,7 +8,7 @@ import java.io.File;
             以盘符(c:,D:)开始的路径
                 c:\\a.txt
                 C:\\Users\itcast\\IdeaProjects\\shungyuan\\123.txt
-                D:\\demo\\b.txt
+                D:\\test\\b.txt
         相对路径:是一个简化的路径
             相对指的是相对于当前项目的根目录(C:\\Users\itcast\\IdeaProjects\\shungyuan)
             如果使用当前项目的根目录,路径可以简化书写
