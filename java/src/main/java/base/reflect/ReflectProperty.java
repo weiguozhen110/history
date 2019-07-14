@@ -9,7 +9,7 @@ import java.util.Properties;
 /**
  * 框架类
  */
-public class ReflectTest {
+public class ReflectProperty {
     public static void main(String[] args) throws Exception {
         //可以创建任意类的对象，可以执行任意方法
 
@@ -27,7 +27,7 @@ public class ReflectTest {
         Properties pro = new Properties();
         //1.2加载配置文件，转换为一个集合
         //1.2.1获取class目录下的配置文件
-        ClassLoader classLoader = ReflectTest.class.getClassLoader();
+        ClassLoader classLoader = ReflectProperty.class.getClassLoader();
         InputStream is = classLoader.getResourceAsStream("base/reflect/pro.properties");
         pro.load(is);
 
