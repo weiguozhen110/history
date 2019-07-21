@@ -24,6 +24,7 @@
     <modules>
         <module>base</module>
         <module>design</module>
+        <module>end</module>
     </modules>
 
 

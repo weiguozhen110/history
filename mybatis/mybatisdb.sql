@@ -15,8 +15,6 @@ insert  into `user`(`id`,`username`,`birthday`,`sex`,`address`) values (41,'è€ç
 
 
 
-
-
 DROP TABLE IF EXISTS `account`;
 
 CREATE TABLE `account` (
