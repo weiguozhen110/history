@@ -19,6 +19,8 @@
         <module>dbutils</module>
         <module>dbutilsanno</module>
         <module>dbutilsnoxml</module>
+        <module>bank</module>
+        <module>proxy</module>
     </modules>
 
 
