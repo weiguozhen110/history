@@ -15,6 +15,7 @@
         <module>java</module>
         <module>angular</module>
         <module>mybatis</module>
+        <module>spring</module>
     </modules>
 
 </project>
