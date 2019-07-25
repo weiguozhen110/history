@@ -8,11 +8,11 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 配置srping的Ioc,把service对象配置进来-->
-    <bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl"></bean>
+    <bean id="accountService" class="spring.advice.service.impl.AccountServiceImpl"></bean>
 
 
     <!-- 配置Logger类 -->
-    <bean id="logger" class="com.itheima.utils.Logger"></bean>
+    <bean id="logger" class="spring.advice.utils.Logger"></bean>
 
     <!--配置AOP-->
     <aop:config>
@@ -20,7 +20,7 @@
               此标签写在aop:aspect标签内部只能当前切面使用。
               它还可以写在aop:aspect外面，此时就变成了所有切面可用
           -->
-        <aop:pointcut id="pt1" expression="execution(* com.itheima.service.impl.*.*(..))"></aop:pointcut>
+        <aop:pointcut id="pt1" expression="execution(* spring.advice.service.impl.*.*(..))"></aop:pointcut>
         <!--配置切面 -->
         <aop:aspect id="logAdvice" ref="logger">
             <!-- 配置前置通知：在切入点方法执行之前执行

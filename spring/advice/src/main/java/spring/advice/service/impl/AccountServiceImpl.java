@@ -1,11 +1,12 @@
 package spring.advice.service.impl;
 
-import com.itheima.service.IAccountService;
+
+import spring.advice.service.AccountService;
 
 /**
  * 账户的业务层实现类
  */
-public class AccountServiceImpl implements IAccountService{
+public class AccountServiceImpl implements AccountService {
 
     @Override
     public void saveAccount() {

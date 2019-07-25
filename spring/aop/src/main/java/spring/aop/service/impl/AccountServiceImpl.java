@@ -1,11 +1,11 @@
 package spring.aop.service.impl;
 
-import com.itheima.service.IAccountService;
+import spring.aop.service.AccountService;
 
 /**
  * 账户的业务层实现类
  */
-public class AccountServiceImpl implements IAccountService{
+public class AccountServiceImpl implements AccountService {
 
     @Override
     public void saveAccount() {
@@ -14,7 +14,7 @@ public class AccountServiceImpl implements IAccountService{
 
     @Override
     public void updateAccount(int i) {
-        System.out.println("执行了更新"+i);
+        System.out.println("执行了更新" + i);
 
     }
 

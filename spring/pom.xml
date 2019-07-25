@@ -21,6 +21,15 @@
         <module>dbutilsnoxml</module>
         <module>bank</module>
         <module>proxy</module>
+        <module>aop</module>
+        <module>advice</module>
+        <module>aopanno</module>
+        <module>jdbctemplate</module>
+        <module>aoptxxml</module>
+        <module>aoptxanno</module>
+        <module>txxml</module>
+        <module>txanno</module>
+        <module>txwithoutxml</module>
     </modules>
 
 

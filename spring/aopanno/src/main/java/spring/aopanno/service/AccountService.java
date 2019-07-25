@@ -3,7 +3,7 @@ package spring.aopanno.service;
 /**
  * 账户的业务层接口
  */
-public interface IAccountService {
+public interface AccountService {
 
     /**
      * 模拟保存账户
