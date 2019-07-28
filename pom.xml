@@ -16,6 +16,7 @@
         <module>angular</module>
         <module>mybatis</module>
         <module>spring</module>
+        <module>springmvc</module>
     </modules>
 
 </project>
