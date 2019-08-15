@@ -17,6 +17,8 @@
         <module>mybatis</module>
         <module>spring</module>
         <module>springmvc</module>
+        <module>mysql</module>
+        <module>linux</module>
     </modules>
 
 </project>
