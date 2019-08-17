@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>xml</module>
+        <module>tomcat</module>
+        <module>http</module>
     </modules>
 
 
