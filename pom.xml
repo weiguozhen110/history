@@ -19,6 +19,7 @@
         <module>springmvc</module>
         <module>mysql</module>
         <module>linux</module>
+        <module>web</module>
     </modules>
 
 </project>
