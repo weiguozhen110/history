@@ -20,6 +20,7 @@
         <module>mysql</module>
         <module>linux</module>
         <module>web</module>
+        <module>server</module>
     </modules>
 
 </project>
