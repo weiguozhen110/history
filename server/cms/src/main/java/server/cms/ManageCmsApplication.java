@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EntityScan("server.model.domain.cms")//扫描实体类
 @ComponentScan(basePackages={"server.api"})//扫描接口
+@ComponentScan(basePackages={"server.common"})//扫描common包下的类
 @ComponentScan(basePackages={"server.cms"})//扫描本项目下的所有类
 public class ManageCmsApplication {
     public static void main(String[] args) {

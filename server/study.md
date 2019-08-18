@@ -526,6 +526,45 @@
         npm i node-sass -D      
 7.5)成功运行项目
     http://localhost:11000
+7.6)IDEA 添加 vue.js 插件   
+7.7)页面结构
+    1)在model目录创建 cms模块的目录结构
+    2)page目录新建page_list.vue,三部分组成
+      template
+      script
+      style
+    注意：template内容必须有一个根元素，否则vue会报错，这里我们在template标签内定义一个div
+    3)页面路由
+      在cms的router下配置路由
+      在base目录下的router导入cms模块的路由
+    4)Api调用
+      前端页面导入cms.js，调用js方法请求服务端页面查询接口
+      4.1)导入cms.js
+      4.2)在query方法中调用 page_list方法
+    5)跨域问题解决
+      5.1)采用proxyTable解决
+          proxyTable的底层使用了http-proxymiddleware,它是http代理中间件，它依赖node.js，基本原理是用服务端代理解决浏览器跨域      
+      5.2)在config/index.js下配置proxyTable。
+        '/api/cms': {
+            target: 'http://localhost:31001',
+            pathRewrite: {
+                '^/api': ''//实际请求去掉/api
+        }
+    6)进入页面立即查询
+      6.1)生命周期钩子的函数
+        created：vue实例已创建但是DOM元素还没有渲染生成
+        mounted：DOM元素渲染生成完成后调用
+      6.2)代码
+        mounted() {
+            //默认查询页面
+            this.query()
+        }
+      6.3)router-link是vue提供的路由功能，用于在页面生成路由链接，最终在html渲染后就是<a标签。    
+7.8)Element-UI
+    1)http://element.eleme.io/#/zh-CN/component/installation    
+8.异常处理
+    8.1)采用SpringMVC控制器增强
+        ExceptionCatch.java  
         
          
         

@@ -108,11 +108,12 @@
         })
       },
       editSubmit(){
-        this.$refs.pageForm.validate((valid) => {
-          if (valid) {
+        this.$refs.pageForm.validate((valid) => {//表单校验
+          if (valid) {//表单校验通过
             this.$confirm('确认提交吗？', '提示', {}).then(() => {
               this.addLoading = true;
-              cmsApi.page_edit(this.pageForm).then((res) => {
+              //修改提交请求服务端的接口
+              cmsApi.page_edit(this.pageId,this.pageForm).then((res) => {
                   console.log(res);
                 if(res.success){
                   this.addLoading = false;
@@ -132,14 +133,15 @@
           }
         });
       }
+
     },
     created: function () {
       this.pageId=this.$route.params.pageId;
       //根据主键查询页面信息
       cmsApi.page_get(this.pageId).then((res) => {
         console.log(res);
-        if(res.success){
-          this.pageForm = res.cmsPage;
+        if(res){
+          this.pageForm = res;
         }
       });
     },

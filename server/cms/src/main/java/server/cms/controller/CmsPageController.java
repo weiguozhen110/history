@@ -1,14 +1,14 @@
 package server.cms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import server.api.cms.CmsPageControllerApi;
 import server.cms.service.PageService;
 import server.common.model.response.QueryResponseResult;
+import server.common.model.response.ResponseResult;
+import server.model.domain.cms.CmsPage;
 import server.model.domain.cms.request.QueryPageRequest;
+import server.model.domain.cms.response.CmsPageResult;
 
 /**
  * @author Administrator
@@ -40,5 +40,29 @@ public class CmsPageController implements CmsPageControllerApi {
         return queryResponseResult;*/
         //调用service
         return pageService.findList(page,size,queryPageRequest);
+    }
+
+    @Override
+    @PostMapping("/add")
+    public CmsPageResult add(@RequestBody CmsPage cmsPage) {
+        return pageService.add(cmsPage);
+    }
+
+    @Override
+    @GetMapping("/get/{id}")
+    public CmsPage findById(@PathVariable("id") String id) {
+        return pageService.getById(id);
+    }
+
+    @Override
+    @PutMapping("/edit/{id}")//这里使用put方法，http 方法中put表示更新
+    public CmsPageResult edit(@PathVariable("id")String id, @RequestBody CmsPage cmsPage) {
+        return pageService.update(id,cmsPage);
+    }
+
+    @Override
+    @DeleteMapping("/del/{id}")
+    public ResponseResult delete(@PathVariable("id") String id) {
+        return pageService.delete(id);
     }
 }
