@@ -564,19 +564,105 @@
     1)http://element.eleme.io/#/zh-CN/component/installation    
 8.异常处理
     8.1)采用SpringMVC控制器增强
-        ExceptionCatch.java  
+        ExceptionCatch.java
         
-         
-        
-      
+#开发阶段二
+1.页面静态化 FreeMarker 模板+数据模型=输出
+    1.1)配置文件
+        spring:
+            application:
+                name: test‐freemarker #指定服务名
+            freemarker:
+                cache: false #关闭模板缓存，方便测试
+                settings:
+                template_update_delay: 0 #检查模板更新延迟时间，设置为0表示立即检查，如果时间大于0会有缓存不方便进行模板测试
+    1.2)创建模板
+        在 src/main/resources下创建templates，此目录为freemarker的默认模板存放目录。
+    1.3)创建controller
+        @Controller（html） 不能使用RestController（json）
+        public class FreemarkerController {    
+    1.4)核心指令
+        1)List指令
+            _index：得到循环的下标，使用方法是在stu后边加"_index"，它的值是从0开始  
+        2)遍历Map数据
+           ${stuMap['stu1'].name}
+           ${stuMap.stu1.name}
+           <#list stuMap?keys as k> ${stuMap[k].name
+        3)if指令
+           <td <#if stu.name =='小明'>style="background:red;"</#if>>${stu.name}</td>
+        4)运算符
+           算数运算符 +, - , * , / , % 
+           逻辑运算符 &&,||,!(只能作用于布尔值,否则将产生错误)
+           比较运算符 =或者==,!=,>或者gt,>=或者gte,<或者lt,<=或者lte
+        5)空值处理 
+          “??”   如：<#if stus??>   
+          !      如：${name!''}表示如果name为空显示空字符串。
+          ()嵌套  如：${(stu.bestFriend.name)!''}表示，如果stu或bestFriend或name为空默认显示空字符串
+     1.5)内建函数
+        建函数语法格式： 变量+?+函数名称
+        1)${集合名?size}
+        2)显示年月日:    ${today?date}
+          显示时分秒：   ${today?time}
+          显示日期+时间：${today?datetime} <br>
+          自定义格式化： ${today?string("yyyy年MM月")}
+        3)内建函数c point是数字型
+          ${point}     会显示这个数字的值，且每三位使用逗号分隔。
+          ${point?c}   如果不想显示为每三位分隔的数字，可以使用c函数将数字型转成字符串输出。
+        4)将json字符串转成对象 assign
+          <#assign text="{'bank':'工商银行','account':'10101920201920212'}" />
+          <#assign data=text?eval />
+          开户行：${data.bank} 账号：${data.account}  
+2.页面静态化
+    2.1)页面静态化流程
+        1)静态化程序首先读取页面获取DataUrl。
+        2)静态化程序远程请求DataUrl得到数据模型。
+        3)获取页面模板。
+        4)执行页面静态化。
+    2.2)数据模型
+        CmsConfigModel.java
+        CMS中有轮播图管理、精品课程推荐的功能，以轮播图管理为例说明：轮播图管理是通过可视化的操作界面由管理员指定轮播图图片地址，最后将轮播图图片地址保存在cms_config集合中              
+    2.3)接口定义
+        CmsConfigControllerApi.java
+    2.4)Dao
+        CmsConfigRepository.java
+    2.5)Service
+        CmsConfigService.java
+    2.6)测试
+        get请求：http://localhost:31001/cms/config/getmodel/5a791725dd573c3574ee333f （轮播图信息）
+3.远程请求接口
+    3.1)添加依赖
+        <groupId>com.squareup.okhttp3</groupId>
+        <artifactId>okhttp</artifactId>
+    3.2)SpringBoot启动类中配置 RestTemplate
+        public class ManageCmsApplication {
+            public static void main(String[] args) {
+                SpringApplication.run(ManageCmsApplication.class,args);
+            } 
+            @Bean
+            public RestTemplate restTemplate() {
+                return new RestTemplate(new OkHttp3ClientHttpRequestFactory());
+            }
+        }
+    3.3)测试RestTemplate
+        ResponseEntity<Map> forEntity = restTemplate.getForEntity("http://localhost:31001/cms/config/get/5a791725dd573c3574ee333f",Map.class);
+4.GridFS
+    在GridFS存储文件是将文件分块存储，文件会按照256KB的大小分割成多个块进行存储，GridFS使用两个集合（collection）存储文件，一个集合是chunks, 用于存储文件的二进制数据；
+    一个集合是files，用于存储文件的元数据信息（文件名称、块大小、上传时间等信息）。从GridFS中读取文件要对文件的各各块进行组装、合并。
+    详细参考：https://docs.mongodb.com/manual/core/gridfs/  
+5.页面预览开发
+    5.1)sudo vi /private/etc/hosts
+        追加： 127.0.0.1 www.server.com
+    5.2)配置Nginx代理
+        #页面预览
+        location /cms/preview/ {
+            proxy_pass http://cms_server_pool/cms/preview/;
+        }
+    5.3)配置cms_server_pool将请求转发到cms
+        #cms页面预览
+        upstream cms_server_pool{
+            server 127.0.0.1:31001 weight=10;
+        }    
+6.            
             
-         
-                                
-              
-    
-    
-    
-     
-          
-              
+                 
     
