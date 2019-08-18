@@ -662,7 +662,95 @@
         upstream cms_server_pool{
             server 127.0.0.1:31001 weight=10;
         }    
-6.            
+6.MQ全称为Message Queue，即消息队列
+    RabbitMQ官方地址：http://www.rabbitmq.com
+    6.1)使用RabbitMQ
+        1)使得简单，功能强大。
+        2)基于AMQP协议。
+        3)社区活跃，文档完善。
+        4)高并发性能好，这主要得益于Erlang语言。
+        5)Spring Boot默认已集成RabbitMQ
+    6.2)RabbitMQ的组成部分
+        1)Broker：消息队列服务进程，此进程包括两个部分：Exchange和Queue。
+        2)Exchange：消息队列交换机，按一定的规则将消息路由转发到某个队列，对消息进行过虑。
+        3)Queue：消息队列，存储消息的队列，消息到达队列并转发给指定的消费方。
+        4)Producer：消息生产者，即生产方客户端，生产方客户端将消息发送到MQ。
+        5)Consumer：消息消费者，即消费方客户端，接收MQ转发的消息。
+    6.3)消息发布接收流程
+        -----发送消息-----
+        1)生产者和Broker建立TCP连接。
+        2)生产者和Broker建立通道。
+        3)生产者通过通道消息发送给Broker，由Exchange将消息进行转发。
+        4)Exchange将消息转发到指定的Queue（队列）
+        ----接收消息-----
+        1)消费者和Broker建立TCP连接
+        2)消费者和Broker建立通道
+        3)消费者监听指定的Queue（队列）
+        4)当有消息到达Queue时Broker默认将消息推送给消费者。
+        5)消费者接收到消息。
+    6.4)安装(安装RabbitMQ需要安装Erlang/OTP，并保持版本匹配)
+        RabbitMQ的下载地址：http://www.rabbitmq.com/download.html
+        参考安装地址：https://www.cnblogs.com/edward2013/p/5061511.html
+        1)手动RPM方式
+          wget http://www.rabbitmq.com/releases/erlang/erlang-18.1-1.el7.centos.x86_64.rpm
+          wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.5.7/rabbitmq-server-3.5.7-1.noarch.rpm
+          wget https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+          rpm --import rabbitmq-signing-key-public.asc
+          rpm -ivh erlang-18.1-1.el7.centos.x86_64.rpm rabbitmq-server-3.5.7-1.noarch.rpm
+        2)RabbitMQ配置
+          rabbitmqctl （rabbitmq管理工具）
+          rabbitmq-plugins （rabbitmq插件管理工具）
+          rabbitmq-server （rabbitmq服务）
+        3)主要配置文件
+          -enabled_plugins：设置允许的插件列表，格式如下：
+          -rabbitmq.config：设置rabbitmq运行参数。结构为hash数组格式。如
+          -rabbitmq-env.conf rabbitmq环境参数配置
+            rabbitmq-env.conf中的每项都以 RABBITMQ_为前缀，常用参数如下：
+            RABBITMQ_NODENAME=FZTEC-240088 //节点名称
+            RABBITMQ_NODE_IP_ADDRESS=127.0.0.1 //IP地址，空串bind所有地址，指定地址bind指定网络接口
+            RABBITMQ_NODE_PORT=5672 //TCP端口号，默认是5672
+            RABBITMQ_LOG_BASE=/data/rabbitmq/log //日志所在路径
+            RABBITMQ_PLUGINS_DIR=/data/rabbitmq/plugins //插件所在路径
+            RABBITMQ_MNESIA_BASE=/data/rabbitmq/mnesia //mnesia所在路径  
+          -rabbitmq-env.conf和rabbitmq.config默认是不存在的。
+           rabbitmq-env.conf需要在缺省位置手动创建一个。
+           rabbitmq.config需要在RABBITMQ_CONFIG_FILE指定位置手动创建一个。
+         4)设置RabbitMQ服务自启动，并启动RabbbitMQ服务
+           chkconfig rabbitmq-server on
+           service rabbitmq-server start  
+         5)启动和配置
+           5.1)常用命令：
+           //常用的rabbitmq的命令
+           service rabbitmq-server   start
+           service rabbitmq-server   stop
+           service rabbitmq-server   status
+           service rabbitmq-server   rotate-logs|
+           service rabbitmq-server   restart
+           service rabbitmq-server   condrestart
+           service rabbitmq-server   try-restart
+           service rabbitmq-server   reload
+           service rabbitmq-server   force-reload
+           ps -ef | grep rabbitmq  查看rabbitMq进程
+           netstat -anplt | grep LISTEN  rabbitmq默认监听端口15672/5672
+           5.2)基本配置：
+           //开启管理页面插件
+           rabbitmq-plugins enable rabbitmq_management
+           管理插件安装完成后，出现如下提示,表示安装成。
+           The following plugins have been enabled:
+             mochiweb
+             webmachine
+             rabbitmq_web_dispatch
+             amqp_client
+             rabbitmq_management_agent
+             rabbitmq_management
+           Plugin configuration has changed. Restart RabbitMQ for changes to take effect.
+           可以用浏览器输入localhost：15672,账号密码全输入guest即可登录
+        6)启动成功 登录RabbitMQ
+          rabbitmq-plugins.bat enable rabbitmq_management
+          进入浏览器，输入：http://localhost:15672   
+          guest/guest
+7.           
+                       
             
                  
     

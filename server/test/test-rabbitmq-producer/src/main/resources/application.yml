@@ -1,0 +1,11 @@
+server:
+  port: 44000
+spring:
+  application:
+    name: server-test-producer
+  rabbitmq:
+    host: 192.168.2.99
+    port: 5672
+    username: guest
+    password: guest
+    virtualHost: /
