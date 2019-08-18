@@ -519,6 +519,13 @@
     Vue --version
 7.2)创建一个基于 webpack 模板的新项目
     vue init webpack ui-pc
+7.3)运行
+7.4)问题
+    1)Node Sass does not yet support your current environment: OS X 64-bit with Unsupported runtime
+        升级了node版本/ node版本太高会造成node-sass不兼容的问题，那么就再install node-sass一下就行了
+        npm i node-sass -D      
+7.5)成功运行项目
+    http://localhost:11000
         
          
         

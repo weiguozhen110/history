@@ -90,6 +90,14 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  created: function(){
+    this.msg = "1"
+    console.log(this.msg)
+  },
+  mounted: function(){
+    this.msg = "2"
+    console.log(this.msg)
   }
 }
 </script>

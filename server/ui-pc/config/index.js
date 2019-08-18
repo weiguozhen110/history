@@ -1,20 +1,93 @@
 'use strict'
-// Template version: 1.3.1
+// Template version: 1.2.4
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-
+var proxyConfig = require('./proxyConfig')
+let sysConfig = require('./sysConfig')
+let xcApiUrl = sysConfig.xcApiUrl
 module.exports = {
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    //proxyTable: proxyConfig.proxyList,
+    proxyTable: {
+      '/banner': {
+        // target: 'http://localhost:3000/mock/11'
+        target: 'http://127.0.0.1:7777'
 
+      },
+      '/api/cms': {
+        target: 'http://localhost:31001',
+        pathRewrite: {
+          '^/api': ''
+        }
+        //target: 'http://127.0.0.1:50201'
+
+      }
+      /*,
+      '/ucenter': {
+        // target: 'http://localhost:3000/mock/11'
+        //target: 'http://127.0.0.1:31200'
+        target: 'http://127.0.0.1:50201'
+
+      },
+      '/auth': {
+        // target: 'http://localhost:3000/mock/11'
+        //target: 'http://127.0.0.1:31200'
+        target: 'http://127.0.0.1:50201/api'
+
+      },
+      '/course': {
+        // target: 'http://localhost:3000/mock/11'
+        //target: 'http://127.0.0.1:31200'
+        target: 'http://127.0.0.1:50201/api'
+
+      },
+      '/media': {//媒资管理
+        //target: 'http://127.0.0.1:31400'
+        target: 'http://127.0.0.1:50201'
+      },
+
+      '/cms/!*': {//cms管理
+        //target: 'http://127.0.0.1:31001'
+        target: 'http://127.0.0.1:50201'
+
+      },
+
+
+      '/filesystem/!*': {//文件系统管理
+        //target: 'http://127.0.0.1:22100'
+        target: 'http://127.0.0.1:50201'
+
+      },
+      '/category/!*': {//分类管理
+        // target: 'http://127.0.0.1:3000/mock/11'
+        //target: 'http://127.0.0.1:31200'
+        target: 'http://127.0.0.1:50201'
+
+      },
+      '/sys/!*': {//系统管理
+        //target: 'http://127.0.0.1:31001'
+        target: 'http://127.0.0.1:50201'
+
+      },*/
+      /*'/static/!*': {//系统管理
+        //target: 'http://127.0.0.1:31001'
+        target: 'http://127.0.0.1'
+
+      },
+      '/group1/*': {//系统管理
+        // target: 'http://127.0.0.1:3000/mock/11'
+        target: 'http://192.168.101.64'
+
+      }*/
+    },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 11000, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
@@ -33,16 +106,20 @@ module.exports = {
      */
 
     // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'eval-source-map',
 
     // If you have problems debugging vue-files in devtools,
     // set this to false - it *may* help
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
 
-    cssSourceMap: true
+    // CSS Sourcemaps off by default because relative paths are "buggy"
+    // with this option, according to the CSS-Loader README
+    // (https://github.com/webpack/css-loader#sourcemaps)
+    // In our experience, they generally work as expected,
+    // just be aware of this issue when enabling this option.
+    cssSourceMap: false,
   },
-
   build: {
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
